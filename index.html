@@ -3,31 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="safetywork — website coming soon.">
-  <meta name="theme-color" content="#f5f3ec">
-  <title>safetywork — Coming soon</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f3ec; color: #222c29; font-family: 'Segoe UI', sans-serif; }
-    main { min-height: 100svh; display: flex; flex-direction: column; padding: clamp(24px, 5vw, 72px); }
-    header { font-size: 15px; font-weight: 650; letter-spacing: -.02em; }
-    section { margin-block: auto; padding-block: 80px; }
-    .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #616f66; }
-    h1 { font-size: clamp(52px, 12vw, 160px); letter-spacing: -.075em; font-weight: 500; line-height: 1; margin: 22px 0; }
-    .note { font-size: clamp(18px, 2.5vw, 26px); color: #646c64; }
-    footer { border-top: 1px solid #d9ddd1; padding-top: 20px; color: #646c64; font-size: 12px; }
-    .dot { display: inline-block; width: 7px; height: 7px; background: #62876b; border-radius: 50%; margin-right: 9px; }
-  </style>
+  <meta name="description" content="A personal workspace for AI safety research. Plan projects, connect ideas, collect papers, and keep an honest record of progress.">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>safetywork — A place for research in progress</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <main>
-    <header>safetywork</header>
-    <section aria-labelledby="site-title">
-      <p class="label"><span class="dot" aria-hidden="true"></span>Coming soon</p>
-      <h1 id="site-title">safetywork.</h1>
-      <p class="note">A new space is taking shape.</p>
-    </section>
-    <footer>safetywork / Website in progress</footer>
-  </main>
+  <a href="#content" class="skip">Skip to content</a>
+  <header class="bar"><a class="brand" href="#home"><span class="brand-icon">s<span>↗</span></span>safetywork<span class="beta">BETA / 01</span></a><nav aria-label="Main navigation"><a href="#home">Home</a><a href="#studio">Design studio</a><a href="#calendar">Calendar</a><a href="#library">Paper library</a></nav><button class="quiet" data-action="settings" title="Data, backups & help">Data & backup ↗</button></header>
+  <main id="content" tabindex="-1"><p class="loading">Opening your workspace…</p></main>
+  <footer class="site-footer"><span>safetywork <span class="muted">/ Make the work visible.</span></span><span id="storage-status">Local workspace · saved on this browser</span><button class="text-btn" data-action="settings">Storage & help</button></footer>
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="backup-input" accept="application/json,.json" hidden>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
