@@ -7,16 +7,16 @@
   <meta name="theme-color" content="#f6f5f0">
   <title>safetywork — A place for research in progress</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css?v=2">
 </head>
 <body>
-  <a href="#content" class="skip">Skip to content</a>
-  <header class="bar"><a class="brand" href="#home"><span class="brand-icon">s<span>↗</span></span>safetywork<span class="beta">BETA / 01</span></a><nav aria-label="Main navigation"><a href="#home">Home</a><a href="#studio">Design studio</a><a href="#calendar">Calendar</a><a href="#library">Paper library</a></nav><button class="quiet" data-action="settings" title="Data, backups & help">Data & backup ↗</button></header>
+  <a href="#content" class="skip" data-i18n="Skip to content">Skip to content</a>
+  <header class="bar"><a class="brand" href="#home"><span class="brand-icon">s<span>↗</span></span>safetywork<span class="beta">BETA / 02</span></a><nav aria-label="Main navigation"><a href="#home" data-i18n="Home">Home</a><a href="#studio" data-i18n="Design studio">Design studio</a><a href="#calendar" data-i18n="Calendar">Calendar</a><a href="#library" data-i18n="Paper library">Paper library</a></nav><div class="header-tools"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="zh-CN" aria-pressed="false">简中</button></div><button class="quiet" data-action="settings" data-i18n="Data & backup ↗">Data & backup ↗</button></div></header>
   <main id="content" tabindex="-1"><p class="loading">Opening your workspace…</p></main>
-  <footer class="site-footer"><span>safetywork <span class="muted">/ Make the work visible.</span></span><span id="storage-status">Local workspace · saved on this browser</span><button class="text-btn" data-action="settings">Storage & help</button></footer>
+  <footer class="site-footer"><span>safetywork / <span class="muted" data-i18n="Make the work visible.">Make the work visible.</span></span><span id="storage-status" data-i18n="Local workspace · saved on this browser">Local workspace · saved on this browser</span><button class="text-btn" data-action="settings" data-i18n="Storage & help">Storage & help</button></footer>
   <dialog id="modal"><div id="modal-content"></div></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
   <input type="file" id="backup-input" accept="application/json,.json" hidden>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="./app.js?v=2"></script>
 </body>
 </html>

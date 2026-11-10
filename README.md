@@ -4,6 +4,16 @@ A personal AI safety research workspace, from the first question to the final dr
 
 Live site: https://zsf-nju.github.io/safetywork/
 
+## Beta 02 — languages and research overview
+
+Use **EN / 简中** in the top bar to switch between English and Simplified Chinese. The selection persists in the current browser. Interface strings and dates are localized; project names, reading reflections, pseudocode, and experiment cells retain their original content. Existing workspace databases and backup formats remain compatible.
+
+The Design studio now combines a deep-green research overview with split-number counters, a deadline queue, detailed project dossiers, segmented stage progress, a workflow index, and recent activity. The visual structure takes cues from the reference site's editorial panels and research indexes.
+
+The monthly calendar uses only the required 4–6 week rows and a viewport-sized grid. Crowded days show a summary and a button opening all deadlines in a dialog, so additional events never stretch the month. Upcoming deadlines appear in a separately scrolling side panel on desktop. Six-row months are checked at 1440×900, 1366×768, 1280×720, and 390×844.
+
+Run the additional language and layout acceptance suite with `python tests/test_locale_layout.py`. It verifies language persistence, Chinese forms and reading filters, canonical stored status values, unchanged user content, day-overflow dialogs, mobile layouts, and whole-month visibility.
+
 ## Research workflow
 
 - **Home**: purpose, workflow overview, and entry into the design studio. No trending feed or animated research graph.
