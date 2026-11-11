@@ -26,7 +26,7 @@ def run():
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.goto(BASE)
         page.wait_for_load_state('networkidle')
-        expect(page.get_by_role('heading', name='Good research.')).to_be_visible()
+        expect(page.get_by_role('heading', name='Safety research.')).to_be_visible()
         page.screenshot(path=str(OUT/'home-desktop.png'), full_page=True)
 
         def click(action, root=None):

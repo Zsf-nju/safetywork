@@ -55,12 +55,14 @@ Source layout:
 
 - `index.html`: application shell and accessibility landmarks
 - `styles.css`: responsive design
+- `typography.css`: readable UI type scale and editorial display headings
+- `assets/fonts/`: locally served open-source fonts and their licenses
 - `app.js`: routes, editors, project workflows, import/export
 - `db.js`: IndexedDB transactions
 - `schema.js`: backup validation
 - `tests/test_workspace.py`: browser acceptance tests
 
-Typography uses Google Fonts with local fallbacks. No external scripts, paid APIs, or credentials are required.
+Typography uses locally hosted Fraunces and DM Sans, with a small Noto Serif SC subset for authored Chinese display headings. Chinese interface text uses the system sans-serif stack. No Google Fonts request, external script, paid API, or credentials are required at runtime.
 
 ## Verification
 
@@ -68,9 +70,13 @@ Requires Python Playwright and a local Microsoft Edge installation:
 
 ```powershell
 python tests/test_workspace.py
+python tests/test_locale_layout.py
+python tests/test_typography.py
 ```
 
 The test starts a temporary HTTP server in-process, uses an isolated browser context, exercises every research tool, checks reload persistence and full PDF backup restoration, and verifies mobile layout. Screenshots/downloads are generated under ignored `artifacts/` (test data is never published).
+
+The locale suite checks language persistence and preservation of user-written data. The typography suite checks loaded fonts, readable sidebar sizes, tablet/mobile width, and a populated six-week calendar at 720px/768px laptop and 844px phone heights, including the final row's overflow dialog.
 
 To exercise the deployed site in an isolated browser instead:
 
@@ -85,3 +91,5 @@ Remove-Item Env:SAFETYWORK_TEST_URL
 GitHub Pages publishes the root of `main`. Push changes to `origin/main` and wait for `pages-build-deployment` to finish. Keep `.nojekyll`. No backend configuration or server secrets are needed.
 
 Design reference: [AI Safety Index](https://gabrygao.github.io/ai-safety-index/) for its calm research-oriented structure and organization. This project has its own layout and code; its purpose is recording personal research progress.
+
+The November 2026 typography pass also reviewed [Linear](https://linear.app/), [Notion](https://www.notion.com/product), and [Stripe](https://stripe.com/) in the browser. The resulting direction separates short functional headings from explanatory copy, uses distinctive serif type for display headings and index numerals, and keeps controls and records in readable sans-serif type. Studio sidebar headings are 20px, primary record text 15px, and metadata at least 12px. Full-month calendar visibility remains a layout constraint.

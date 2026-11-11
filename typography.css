@@ -1,0 +1,194 @@
+/* Editorial display type, with a separate, readable interface hierarchy. */
+@font-face{font-family:Fraunces;src:url('./assets/fonts/fraunces.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:Fraunces;src:url('./assets/fonts/fraunces-italic.ttf') format('truetype');font-style:italic;font-weight:500;font-display:swap}
+@font-face{font-family:'DM Sans';src:url('./assets/fonts/dm-sans.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans';src:url('./assets/fonts/dm-sans-medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'DM Sans';src:url('./assets/fonts/dm-sans-semibold.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'DM Sans';src:url('./assets/fonts/dm-sans-bold.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'Safetywork Serif SC';src:url('./assets/fonts/noto-serif-sc-headings.ttf');font-weight:600;font-display:swap}
+
+:root{--display:Fraunces,Georgia,serif;--display-zh:'Safetywork Serif SC','Noto Serif SC','Songti SC',SimSun,serif;--muted:#596454}
+body{font-size:15px;line-height:1.65}
+h1,h2{font-weight:500;letter-spacing:-1px}
+button,.btn,.large{font-size:14px}
+.bar nav a{font-size:14px}
+.language-switch button{font-size:12px;padding:5px 9px}
+.eyebrow,.small-label{font-size:12px;letter-spacing:1px}
+.tag,.breadcrumbs,.site-footer,.chart-free,.stage-meta,.table-note,.board-help,.connections{font-size:12px}
+.small-label{font-weight:600;line-height:1.5}
+.hero{gap:64px;padding-top:50px}
+.hero h1{font-size:clamp(50px,5.2vw,74px);line-height:1.12;letter-spacing:-2.8px}
+.hero h1 em{font-weight:500}
+.hero p{font-size:16px;line-height:1.8}
+.hero-card h2{font-size:35px;line-height:1.2}
+.hero-card .eyebrow{font-size:11px;letter-spacing:1px}
+.index-line{font-size:14px;gap:12px}
+.index-line span:last-child,.hero-card .annotation{font-size:12px}
+.hero-card .annotation{line-height:1.7}
+.section-top h2{font-size:32px}
+.feature .num{font:600 12px/1.5 var(--sans);letter-spacing:1.2px}
+.feature h3{font-size:20px}
+.feature p,.note-band{font-size:14px}
+.empty h3{font:600 23px/1.4 var(--sans);letter-spacing:-.3px}
+.empty p{font-size:14px}
+
+/* Studio: the right column is a working panel, not a footnote. */
+.studio-masthead{padding-bottom:22px;margin-bottom:24px}
+.studio-masthead h1{font:500 50px/1.2 var(--display);letter-spacing:-2px;margin-top:8px}
+.studio-masthead .eyebrow{font-size:12px}
+.studio-overview,.studio-body{grid-template-columns:minmax(0,1.7fr) minmax(320px,1fr);gap:28px}
+.research-board{display:flex;flex-direction:column;padding:27px 30px 20px;overflow:hidden}
+.research-board .eyebrow,.board-edition{font-size:12px}
+.research-board h2{font:500 clamp(32px,3.2vw,46px)/1.2 var(--display);letter-spacing:-1.5px;margin:22px 0 10px}
+.research-board h2 em{font-style:italic;font-weight:500}
+.research-board>p{font-size:15px;line-height:1.7;color:#d7e5da;max-width:480px}
+.studio-stats{margin:28px 0 25px;gap:12px}
+.studio-stats .stat small{font-size:12px;line-height:1.45;letter-spacing:0;text-transform:none;white-space:normal;min-height:35px;color:#deeadf}
+.studio-stats .stat strong{font-size:clamp(40px,4vw,60px);font-variant-numeric:tabular-nums}
+.board-bottom{margin-top:auto;font-size:11px;color:#deeadf;gap:9px}
+.board-bottom>span:last-child{display:none}
+.deadline-panel{display:flex;flex-direction:column;padding:22px 22px 0;background:#eeeee5}
+.panel-title{padding-bottom:14px;gap:14px}
+.panel-title h2,:lang(zh-CN) .panel-title h2{font:700 20px/1.4 var(--sans);letter-spacing:-.35px;color:var(--ink)}
+.panel-title>span{font-size:12px;color:#65705c;font-variant-numeric:tabular-nums}
+.panel-title>a{font-size:23px;padding:0 4px}
+.deadline-row{display:grid;grid-template-columns:25px minmax(0,1fr);gap:1px 12px;padding:13px 0;align-items:start}
+.deadline-index{grid-row:1/3;font:500 italic 23px/1.4 var(--display);color:#95733d}
+.deadline-row strong{font-size:15px;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+.deadline-row small{font-size:12px;line-height:1.6;color:#596454;margin-top:2px}
+.deadline-row time{grid-column:2;font-size:12px;color:#725e3c;line-height:1.5}
+.deadline-row.late time{color:#9b442a}
+@media(min-width:1200px){
+  .deadline-row{grid-template-columns:25px minmax(0,1fr) 100px;padding:17px 0}
+  .deadline-index{grid-row:1}
+  .deadline-row time{grid-column:3;align-self:center;text-align:right;white-space:normal}
+}
+.deadline-all{margin-top:auto;padding:15px 0;font-size:14px;font-weight:600}
+.deadline-empty{padding:22px 0 12px}
+.deadline-empty h3{font-size:18px;margin-bottom:8px}
+.deadline-empty p{font-size:14px;max-width:290px}
+.archive-heading h2{font:500 33px/1.3 var(--display);letter-spacing:-.8px;margin-top:6px}
+.archive-total{font:500 italic 42px/1.2 var(--display);color:#65765b}
+.project-archive .toolbar select,.project-archive .search{font-size:14px;padding:9px 11px}
+.workflow-row{grid-template-columns:32px minmax(0,1fr) 42px;padding:15px 0;gap:13px}
+.workflow-number{font:500 italic 26px/1.2 var(--display);color:#95733d}
+.workflow-row strong{font-size:15px;line-height:1.5}
+.workflow-count{font-size:13px;font-variant-numeric:tabular-nums;color:#606d56}
+.workflow-track{height:4px;margin-top:9px;max-width:90%}
+.recent-records{margin-top:30px}
+.record-preview{padding:14px 0}
+.record-preview strong{font-size:15px;font-weight:600;line-height:1.5;margin:4px 0;overflow-wrap:anywhere}
+.record-preview time,.record-preview small{font-size:12px;line-height:1.6;color:#596454;overflow-wrap:anywhere}
+.record-preview time{color:#876335;font-variant-numeric:tabular-nums}
+.recent-records>p{font-size:14px;max-width:none}
+.dossier-rail{font-size:12px;letter-spacing:.5px}
+.dossier-rail .tag{font-size:11px}
+.dossier-content{grid-template-columns:minmax(0,1fr) 170px}
+.project-direction{font-size:12px;letter-spacing:0;color:#72603d}
+.dossier h3,:lang(zh-CN) .dossier h3{font-size:22px;line-height:1.4;letter-spacing:-.4px;overflow-wrap:anywhere}
+.dossier p{font-size:14px;line-height:1.7}
+.dossier-progress{font-size:12px;color:#596454}
+.dossier-meta .small-label{font-size:11px;letter-spacing:.3px}
+.dossier-meta>strong{font-size:15px}
+.dossier-meta>small{font-size:12px;line-height:1.6;color:#596454}
+.dossier-open{font-size:14px}
+
+/* Tool labels, forms and system copy use the same readable scale. */
+.stage-link .row{font-size:14px}.stage-link small,.stage-num{font-size:12px}
+.tool-header p,.paper-card p,.writing-card p,.journal p,.modal-body p,.help-list,.storage-summary{font-size:14px}
+.paper-authors,.project-chip{font-size:12px}.paper-card .actions button{font-size:13px}
+.notebook label,.form-grid label{font-size:14px;line-height:1.6}
+.form-grid small{font-size:12px;line-height:1.6}
+.form-grid input,.form-grid textarea,.form-grid select{font-size:15px}
+.notebook .code{font-size:14px}.notebook textarea{font-size:15px}
+.journal h3{font-size:16px}.journal time,.version-list small{font-size:12px}
+.check-row{font-size:15px}.form-error,#toast{font-size:14px}
+th,th button{font-size:12px}td input{font-size:14px}
+.board-node .node-handle{font-size:11px}.board-node strong{font-size:14px}.board-node .node-detail{font-size:12px}
+
+/* A compact month retains its full set of weeks within the viewport. */
+.calendar-heading h1{font:500 36px/1.2 var(--display);margin:7px 0}
+.calendar-heading .eyebrow{font-size:11px}
+.calendar-heading p{font-size:14px;line-height:1.6}
+.calendar-layout{grid-template-columns:minmax(0,1fr) 260px;gap:22px}
+.month-panel button,.month-panel select{font-size:12px}
+.month-panel .toolbar h2{font-size:20px}
+.calendar-grid{height:clamp(310px,calc(100svh - 335px),700px)}
+.weekday{font-size:11px;padding:5px 9px}
+.month-panel .day-number{font-size:12px;height:20px;min-height:20px}
+.day .event{font-size:11px;line-height:17px;min-height:19px;padding:1px 4px;margin-top:2px}
+.day .more-events{font-size:10px;line-height:14px;min-height:14px}
+.calendar-help{font-size:11px}.calendar-help>span:last-child{max-width:58%}
+.calendar-agenda .agenda-item h3{font-size:15px;line-height:1.45}
+.calendar-agenda .agenda-item p,.calendar-agenda .agenda-item time{font-size:12px}
+.calendar-agenda .empty h3{font-size:20px}.calendar-agenda .empty p{font-size:14px}
+
+/* Only authored display headings use the small, locally hosted CJK serif subset. */
+:lang(zh-CN) .hero h1,:lang(zh-CN) .studio-masthead h1,:lang(zh-CN) .research-board h2,
+:lang(zh-CN) .archive-heading h2,:lang(zh-CN) .hero-card h2,:lang(zh-CN) .section-top h2,
+:lang(zh-CN) .head-row h1{font-family:var(--display-zh);font-weight:600;letter-spacing:.02em}
+:lang(zh-CN) .hero h1{font-size:clamp(44px,4.6vw,64px);line-height:1.4}
+:lang(zh-CN) .hero h1 em{font-style:normal;font-weight:600}
+:lang(zh-CN) .studio-masthead h1{font-size:44px}
+:lang(zh-CN) .research-board h2{font-size:38px;line-height:1.4}
+:lang(zh-CN) .research-board h2 em{font-style:normal;font-weight:600}
+:lang(zh-CN) .archive-heading h2,:lang(zh-CN) .hero-card h2{font-size:30px;line-height:1.5}
+:lang(zh-CN) .calendar-heading h1{font-size:32px;line-height:1.3}
+:lang(zh-CN) .empty h3{font-family:var(--sans)}
+
+@media(max-width:1100px){
+  .bar{gap:14px;padding-left:20px;padding-right:20px}.bar nav{gap:14px}
+  .header-tools>.quiet{font-size:12px}.header-tools{gap:6px}
+  .studio-overview,.studio-body{grid-template-columns:minmax(0,1.55fr) minmax(290px,1fr);gap:22px}
+  .research-board{padding:24px}.research-board h2{font-size:34px}
+  .studio-stats{gap:8px}.studio-stats .stat small{font-size:12px;min-height:36px}
+  .dossier-content{grid-template-columns:minmax(0,1fr)}
+  .dossier-meta{border-left:0;border-top:1px solid var(--line);padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:3px 15px}
+  .dossier-meta>strong{grid-column:1;margin:0}.dossier-meta>small{grid-column:1}
+  .dossier-open{grid-column:2;grid-row:1/4;align-self:center;padding:0}
+  .calendar-layout{grid-template-columns:minmax(0,1fr) 215px;gap:16px}
+}
+@media(max-width:760px){
+  .bar{padding:14px 16px 0}.bar .brand{font-size:19px}
+  .header-tools>.quiet{font-size:11px;padding:6px}.language-switch button{font-size:12px;padding:4px 6px}
+  .bar nav{gap:23px}.bar nav a{font-size:13px}
+  .hero{padding-top:22px;gap:30px}.hero h1{font-size:49px;letter-spacing:-2px}
+  .hero-card h2{font-size:29px}.hero-card{padding:24px}
+  .index-line{font-size:13px;gap:10px}.index-line span:last-child{font-size:12px}
+  .hero-card .eyebrow{font-size:10px}.section-top{align-items:flex-start;gap:20px}
+  .section-top .eyebrow{font-size:11px;max-width:110px}.section-top h2{font-size:28px}
+  .studio-masthead h1{font-size:39px;letter-spacing:-1.5px}.studio-masthead .eyebrow{font-size:12px}
+  .studio-overview,.studio-body{grid-template-columns:minmax(0,1fr)}
+  .research-board{padding:23px 20px 18px}.research-board h2{font-size:32px;letter-spacing:-1px}
+  .research-board .eyebrow,.board-edition{font-size:11px}
+  .studio-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px;margin:22px 0}
+  .studio-stats .stat small{font-size:12px;min-height:18px}.studio-stats .stat strong{font-size:48px}
+  .deadline-panel{padding:20px 20px 0}.deadline-row{padding:14px 0}
+  .project-archive .toolbar{align-items:stretch;flex-direction:column;gap:9px}
+  .project-archive .search,.project-archive select{width:100%;max-width:100%;font-size:14px}
+  .dossier-main{padding:17px 18px}.dossier-rail{padding:9px 18px}
+  .dossier-meta>strong{font-size:15px}.dossier-meta>small{font-size:12px}
+  .dossier h3,:lang(zh-CN) .dossier h3{font-size:21px}
+  .calendar-layout{grid-template-columns:minmax(0,1fr)}
+  body[data-page=calendar] .wrap{padding-top:17px}
+  .calendar-heading{gap:10px;margin-bottom:14px}
+  .calendar-heading h1{font-size:31px}.calendar-heading p{font-size:13px}
+  .calendar-heading>button{font-size:12px;padding:6px 10px}
+  .month-panel .toolbar h2{font-size:18px}.month-panel>.toolbar select{max-width:100%}
+  .calendar-grid{height:clamp(280px,calc(100svh - 425px),500px)}
+  .weekday{font-size:10px;padding:6px 2px}.day{padding:3px 2px}
+  .month-panel .day-number{font-size:12px;height:18px;min-height:18px;width:20px}
+  .day .event{font-size:10px;min-height:17px;line-height:15px;padding:1px 2px;margin-top:1px}
+  .day .more-events{font-size:10px;line-height:13px;min-height:13px}
+  .calendar-help{font-size:11px}.calendar-agenda{max-height:380px}
+  :lang(zh-CN) .studio-masthead h1{font-size:35px}
+  :lang(zh-CN) .research-board h2{font-size:32px}
+  :lang(zh-CN) .archive-heading h2{font-size:28px}
+  :lang(zh-CN) .calendar-heading h1{font-size:30px}
+}
+@media(max-height:780px) and (min-width:761px){
+  .calendar-heading h1{font-size:32px}.calendar-heading p{font-size:13px}
+  .day{padding:3px 5px}.day .event{line-height:15px;min-height:17px;margin-top:1px}
+  .month-panel .day-number{height:17px;min-height:17px}
+  .day .more-events{font-size:10px;line-height:12px;min-height:12px}
+}
